@@ -2,7 +2,7 @@
   "name": "mood_tracker",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "eslintConfig": {
     "extends": [
       "wesbos/typescript"
@@ -14,7 +14,7 @@
     "db:studio": "prisma studio",
     "dev": "next dev",
     "postinstall": "prisma generate",
-    "lint": "eslint .",
+    "lint": "next lint",
     "lint:fix": "eslint . --fix",
     "start": "next start",
     "prepare": "husky install"

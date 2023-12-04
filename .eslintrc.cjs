@@ -1,17 +1,60 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: true,
+  'env': {
+    'node': true
   },
-  plugins: ['@typescript-eslint'],
-  extends: [
-    'plugin:@next/next/recommended',
-    'plugin:@typescript-eslint/recommended-type-checked',
-    'plugin:@typescript-eslint/stylistic-type-checked',
+  'extends': [
+    'next/core-web-vitals',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
-  rules: {
-    'no-debugger': 0,
+  'parser': '@typescript-eslint/parser',
+  'plugins': ['import', 'unused-imports', '@typescript-eslint'],
+  'settings': {
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.jsx', '.ts', '.tsx'],
+        'moduleDirectory': ['node_modules', 'src/']
+      }
+    }
+  },
+  'rules': {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
+    '@next/next/no-img-element': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        'vars': 'all',
+        'varsIgnorePattern': '^_',
+        'args': 'after-used',
+        'argsIgnorePattern': '^_'
+      }
+    ],
+
+    'no-eq-null': 'warn',
+    'import/order': [
+      'warn',
+      {
+        'groups': [
+          ['builtin', 'external'],
+          'internal',
+          'parent',
+          ['sibling', 'index'],
+          'object'
+        ],
+        'newlines-between': 'always',
+        'alphabetize': {
+          'order': 'asc',
+          'caseInsensitive': true
+        }
+      }
+    ],
+    'complexity': 'warn',
     'no-use-before-define': 'off',
     'import/no-cycle': 'off',
     'no-alert': 0,
@@ -81,7 +124,7 @@ const config = {
     'jsx-a11y/href-no-hash': 'off',
     '@typescript-eslint/comma-dangle': ['off'],
     'react/jsx-props-no-spreading': 'off',
-  },
+  }
 };
 
 module.exports = config;
