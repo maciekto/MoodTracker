@@ -31,7 +31,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <link rel='manifest' href='/manifest.json'></link>
       <body className={`font-sans ${inter.variable}`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
