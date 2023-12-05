@@ -1,82 +1,50 @@
 import Link from 'next/link';
 
-import { CreatePost } from '@/app/_components/create-post';
+import block1 from '@/assets/homepage/block1.svg';
+import block2 from '@/assets/homepage/block2.svg';
+import block3 from '@/assets/homepage/block3.svg';
+import letterC from '@/assets/homepage/letterC.svg'
+import letterE from '@/assets/homepage/letterE.svg'
+import letterL from '@/assets/homepage/letterL.svg'
+import letterM from '@/assets/homepage/letterM.svg'
+import letterO from '@/assets/homepage/letterO.svg'
+import letterW from '@/assets/homepage/letterW.svg'
+import mainWoman from '@/assets/homepage/mainWoman.svg'
 import { getServerAuthSession } from '@/server/auth';
 import { api } from '@/trpc/server';
+
 
 export default async function Home() {
   const hello = await api.post.hello.query({ text: 'from tRPC' });
   const session = await getServerAuthSession();
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white'>
-      <div className='container flex flex-col items-center justify-center gap-12 px-4 py-16 '>
-        <h1 className='text-5xl font-extrabold tracking-tight sm:text-[5rem]'>
-          Create <span className='text-[hsl(280,100%,70%)]'>T3</span> App
-        </h1>
-        <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8'>
-          <Link
-            className='flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20'
-            href='https://create.t3.gg/en/usage/first-steps'
-            target='_blank'
-          >
-            <h3 className='text-2xl font-bold'>First Steps →</h3>
-            <div className='text-lg'>
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className='flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20'
-            href='https://create.t3.gg/en/introduction'
-            target='_blank'
-          >
-            <h3 className='text-2xl font-bold'>Documentation →</h3>
-            <div className='text-lg'>
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
-        <div className='flex flex-col items-center gap-2'>
-          <p className='text-2xl text-white'>
-            {hello ? hello.greeting : 'Loading tRPC query...'}
-          </p>
-
-          <div className='flex flex-col items-center justify-center gap-4'>
-            <p className='text-center text-2xl text-white'>
-              {session && <span>Logged in as {session.user?.name}</span>}
-            </p>
-            <Link
-              href={session ? '/api/auth/signout' : '/api/auth/signin'}
-              className='rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20'
-            >
-              {session ? 'Sign out' : 'Sign in'}
-            </Link>
-          </div>
-        </div>
-
-        <CrudShowcase />
+    <main className='flex min-h-screen flex-col items-center justify-center bg-white text-white relative'>
+      {/* Mobile images */}
+      <img className='absolute top-0 right-0 z-20 animate-levitate-slow' src={block1.src} alt='' />
+      <img className='absolute top-2/4 right-0 z-20 animate-levitate-slow delay-150' src={block2.src} alt='' />
+      <img className='absolute bottom-0 left-0 z-20 animate-levitate-slow delay-100' src={block3.src} alt='' />
+      <img className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' src={mainWoman.src} alt='' />
+      <div className='absolute top-1/4 left-1/2 -translate-y-20 -translate-x-1/2 w-20 z-20 -translate-y-4'>
+        <img className='absolute -left-32 top-16 animate-levitate delay-75' src={letterW.src} alt='' />
+        <img className='absolute -left-16 top-12 animate-levitate delay-500' src={letterE.src} alt='' />
+        <img className='absolute -left-6 top-12 animate-levitate delay-150' src={letterL.src} alt='' />
+        <img className='absolute left-4 top-10 animate-levitate delay-200' src={letterC.src} alt='' />
+        <img className='absolute left-16 top-12 animate-levitate delay-300' src={letterO.src} alt='' />
+        <img className='absolute left-28 top-12 animate-levitate delay-100' src={letterM.src} alt='' />
+        <img className='absolute left-44 top-16 animate-levitate' src={letterE.src} alt='' />
       </div>
+      <div className={'absolute top-3/4 -translate-y-14 text-neutral-800 font-BubbleBobble text-xl'}>
+        Mood Tracker
+
+      </div>
+      <Link
+        href={session ? '/api/auth/signout' : '/api/auth/signin'}
+        className='absolute top-3/4 rounded-full bg-neutral-800 px-10 py-3 font-semibold no-underline hover:scale-105 duration-300 transition-transform ease-in-out z-10'
+      >
+        {session ? 'Sign out' : 'Sign in'}
+      </Link>
+         
     </main>
-  );
-}
-
-async function CrudShowcase() {
-  const session = await getServerAuthSession();
-  if (!session?.user) return null;
-
-  const latestPost = await api.post.getLatest.query();
-
-  return (
-    <div className='w-full max-w-xs'>
-      {latestPost ? (
-        <p className='truncate'>Your most recent post: {latestPost.name}</p>
-      ) : (
-        <p>You have no posts yet.</p>
-      )}
-
-      <CreatePost />
-    </div>
   );
 }
