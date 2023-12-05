@@ -25,7 +25,7 @@ export default async function Home() {
       <img className='absolute top-2/4 right-0 z-20 animate-levitate-slow delay-150' src={block2.src} alt='' />
       <img className='absolute bottom-0 left-0 z-20 animate-levitate-slow delay-100' src={block3.src} alt='' />
       <img className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' src={mainWoman.src} alt='' />
-      <div className='absolute top-1/4 left-1/2 -translate-y-20 -translate-x-1/2 w-20 z-20 -translate-y-4'>
+      <div className='absolute top-1/4 left-1/2 -translate-y-20 -translate-x-1/2 w-20 z-20'>
         <img className='absolute -left-32 top-16 animate-levitate delay-75' src={letterW.src} alt='' />
         <img className='absolute -left-16 top-12 animate-levitate delay-500' src={letterE.src} alt='' />
         <img className='absolute -left-6 top-12 animate-levitate delay-150' src={letterL.src} alt='' />
