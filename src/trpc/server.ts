@@ -21,11 +21,11 @@ import { transformer } from './shared';
  * handling a tRPC call from a React Server Component.
  */
 const createContext = cache(() => createTRPCContext({
-    headers: new Headers({
-      cookie: cookies().toString(),
-      'x-trpc-source': 'rsc',
-    }),
-  }));
+  headers: new Headers({
+    cookie: cookies().toString(),
+    'x-trpc-source': 'rsc',
+  }),
+}));
 
 export const api = createTRPCProxyClient<typeof appRouter>({
   transformer,
@@ -44,12 +44,12 @@ export const api = createTRPCProxyClient<typeof appRouter>({
         observable((observer) => {
           createContext()
             .then((ctx) => callProcedure({
-                procedures: appRouter._def.procedures,
-                path: op.path,
-                rawInput: op.input,
-                ctx,
-                type: op.type,
-              }))
+              procedures: appRouter._def.procedures,
+              path: op.path,
+              rawInput: op.input,
+              ctx,
+              type: op.type,
+            }))
             .then((data) => {
               observer.next({ result: { data } });
               observer.complete();

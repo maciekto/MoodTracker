@@ -27,6 +27,7 @@ const config = {
     '@next/next/no-img-element': 'off',
     'unused-imports/no-unused-imports': 'error',
     'jsx-quotes': ['error', 'prefer-single'],
+    'indent': ['error', 2],
     'unused-imports/no-unused-vars': [
       'warn',
       {

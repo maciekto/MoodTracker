@@ -10,8 +10,8 @@ export const postRouter = createTRPCRouter({
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => ({
-        greeting: `Hello ${input.text}`,
-      })),
+      greeting: `Hello ${input.text}`,
+    })),
 
   create: protectedProcedure
     .input(z.object({ name: z.string().min(1) }))
@@ -28,9 +28,9 @@ export const postRouter = createTRPCRouter({
     }),
 
   getLatest: protectedProcedure.query(({ ctx }) => ctx.db.post.findFirst({
-      orderBy: { createdAt: 'desc' },
-      where: { createdBy: { id: ctx.session.user.id } },
-    })),
+    orderBy: { createdAt: 'desc' },
+    where: { createdBy: { id: ctx.session.user.id } },
+  })),
 
   getSecretMessage: protectedProcedure.query(() => 'you can now see this secret message!'),
 });
