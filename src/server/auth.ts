@@ -6,8 +6,9 @@ import {
 } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
-import { env } from '@/env';
+import { env } from '@/env.mjs';
 import { db } from '@/server/db';
+
 
 declare module 'next-auth' {
   interface Session extends DefaultSession {
@@ -46,9 +47,9 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.GOOGLE_SECRET,
       authorization: {
         params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code"
+          prompt: 'consent',
+          access_type: 'offline',
+          response_type: 'code'
         }
       }
     })
