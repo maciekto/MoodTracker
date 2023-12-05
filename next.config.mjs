@@ -7,9 +7,9 @@
   await import('./src/env.mjs');
 })();
 
+import nextPWA from '@ducanh2912/next-pwa';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withPWA = require('@ducanh2912/next-pwa').default({
+const withPWA = nextPWA({
   dest: 'public',
   cacheOnFrontEndNav: true,
   aggressiveFrontEndNavCaching: true,
@@ -30,5 +30,5 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 const config = {};
 
 
-module.exports = withPWA(config);
+export default withPWA(config);
 
