@@ -125,6 +125,14 @@ const config = {
     'jsx-a11y/href-no-hash': 'off',
     '@typescript-eslint/comma-dangle': ['off'],
     'react/jsx-props-no-spreading': 'off',
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "endOfLine": "auto",
+        "tabWidth": 4
+      },
+    ],
   }
 };
 
