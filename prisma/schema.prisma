@@ -12,16 +12,16 @@ generator client {
 }
 
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
+model Mood {
+    id        String      @id @default(cuid())
+    value Int
+    description String?
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-
     createdBy   User   @relation(fields: [createdById], references: [id])
     createdById String
 
-    @@index([name])
     @@index([createdById])
 }
 
@@ -63,7 +63,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
+    moods         Mood[]
 }
 
 model VerificationToken {
