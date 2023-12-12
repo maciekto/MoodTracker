@@ -52,8 +52,20 @@ export const authOptions: NextAuthOptions = {
           response_type: 'code'
         }
       }
-    })
+    }),
+    // EmailProvider({
+    //   server: process.env.EMAIL_SERVER,
+    //   from: process.env.EMAIL_FROM,
+    //   // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
+    // }),
   ],
+  pages: {
+    signIn: '/auth/signin',
+    signOut: '/auth/signout',
+    error: '/auth/error', // Error code passed in query string as ?error=
+    verifyRequest: '/auth/verify-request', // (used for check email message)
+    newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+  }
 };
 
 /**
