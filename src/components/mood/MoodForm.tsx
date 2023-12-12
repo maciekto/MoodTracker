@@ -26,7 +26,6 @@ const formSchema = z.object({
   description: z.string().max(100).optional(),
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function MoodDialog({setOpen}: {setOpen: React.Dispatch<React.SetStateAction<boolean>>}) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,7 +45,7 @@ export default function MoodDialog({setOpen}: {setOpen: React.Dispatch<React.Set
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8 w-full'>
         <FormField
           control={form.control}
           name='mood'
@@ -60,37 +59,37 @@ export default function MoodDialog({setOpen}: {setOpen: React.Dispatch<React.Set
                 >
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='1' />
+                      <RadioGroupItem value='1'  className='hidden'/>
                     </FormControl>
                     <FormLabel className='font-normal'>
-                      1
+                    😥
                     </FormLabel>
                   </FormItem>
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='2' />
+                      <RadioGroupItem value='2' className='hidden'/>
                     </FormControl>
-                    <FormLabel className='font-normal'>
-                      2
+                    <FormLabel>
+                    😡
                     </FormLabel>
                   </FormItem>
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='3' />
+                      <RadioGroupItem value='3'  className='hidden'/>
                     </FormControl>
-                    <FormLabel className='font-normal'>3</FormLabel>
+                    <FormLabel className='font-normal'>😐</FormLabel>
                   </FormItem>
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='4' />
+                      <RadioGroupItem value='4'  className='hidden'/>
                     </FormControl>
-                    <FormLabel className='font-normal'>4</FormLabel>
+                    <FormLabel className='font-normal'>😀</FormLabel>
                   </FormItem>
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='5' />
+                      <RadioGroupItem value='5'  className='hidden'/>
                     </FormControl>
-                    <FormLabel className='font-normal'>5</FormLabel>
+                    <FormLabel className='font-normal'>🤣</FormLabel>
                   </FormItem>
                 
                 </RadioGroup>

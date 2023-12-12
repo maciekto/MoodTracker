@@ -21,17 +21,16 @@ export default function MoodDialog () {
       <DialogTrigger asChild>
         <Button variant='outline'>Submit mood</Button>
       </DialogTrigger>
-      <DialogContent className='sm:max-w-md'>
+      <DialogContent className=''>
         <DialogHeader>
           <DialogTitle>Add your current mood</DialogTitle>
           <DialogDescription>
             Select one of the following moods and add optional description
           </DialogDescription>
         </DialogHeader>
-        <div className='flex items-center space-x-2'>
+        <div className='flex items-center justify-center w-full'>
           <MoodForm setOpen={setOpen}/>
         </div>
-    
       </DialogContent>
     </Dialog>
   )
