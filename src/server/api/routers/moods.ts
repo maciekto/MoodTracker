@@ -19,7 +19,7 @@ export const moodRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => ctx.db.mood.create({
       data: {
         value: input.value,
-        description: input.description,
+        description: input.description || '',
         createdBy: { connect: { id: ctx.session.user.id } },
       },
     })),
