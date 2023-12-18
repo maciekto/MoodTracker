@@ -4,6 +4,9 @@
 
 @import './fonts.css';
 
+* {
+  outline: none;
+}
  
 @layer base {
   :root {

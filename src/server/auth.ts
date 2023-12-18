@@ -4,6 +4,7 @@ import {
   type DefaultSession,
   type NextAuthOptions,
 } from 'next-auth';
+import EmailProvider from 'next-auth/providers/email';
 import GoogleProvider from 'next-auth/providers/google';
 
 import { env } from '@/env.mjs';
@@ -53,11 +54,17 @@ export const authOptions: NextAuthOptions = {
         }
       }
     }),
-    // EmailProvider({
-    //   server: process.env.EMAIL_SERVER,
-    //   from: process.env.EMAIL_FROM,
-    //   // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
-    // }),
+    EmailProvider({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD
+        }
+      },
+      from: process.env.EMAIL_FROM
+    }),
   ],
   pages: {
     signIn: '/auth/signin',
@@ -74,3 +81,4 @@ export const authOptions: NextAuthOptions = {
  * @see https://next-auth.js.org/configuration/nextjs
  */
 export const getServerAuthSession = () => getServerSession(authOptions);
+
