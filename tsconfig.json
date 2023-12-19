@@ -37,6 +37,6 @@
     "**/*.cjs",
     "**/*.js",
     ".next/types/**/*.ts"
-, "commitlint.configcjs", "next.config.mjs"  ],
-  "exclude": ["node_modules"]
+, "commitlint.configcjs", "next.config.mjs", "public/sw.mjs"  ],
+  "exclude": ["node_modules", "public"]
 }
