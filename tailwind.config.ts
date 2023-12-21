@@ -87,4 +87,5 @@ module.exports = {
     },
   },
   plugins: [require('tailwindcss-animate')],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
 }

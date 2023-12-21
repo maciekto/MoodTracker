@@ -3,11 +3,7 @@ const config = {
   'env': {
     'node': true
   },
-  'extends': [
-    'next/core-web-vitals',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended'
-  ],
+  'extends': ['next/core-web-vitals', 'eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:storybook/recommended'],
   'parser': '@typescript-eslint/parser',
   'plugins': ['import', 'unused-imports', '@typescript-eslint'],
   'settings': {
