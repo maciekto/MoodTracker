@@ -23,7 +23,7 @@ export default function MoodDialog () {
       </DialogTrigger>
       <DialogContent className=''>
         <DialogHeader>
-          <DialogTitle>Add your current mood</DialogTitle>
+          <DialogTitle>How are you feeling today?</DialogTitle>
           <DialogDescription>
             Select one of the following moods and add optional description
           </DialogDescription>
