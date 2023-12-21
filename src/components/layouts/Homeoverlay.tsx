@@ -5,7 +5,7 @@ import block2 from '@/assets/homepage/block2.svg';
 import block3 from '@/assets/homepage/block3.svg';
 
 interface Props {
-  children: JSX.Element | JSX.Element[]
+  children?: JSX.Element | JSX.Element[]
 }
 
 export default function Homeoverlay({ children }: Props) {

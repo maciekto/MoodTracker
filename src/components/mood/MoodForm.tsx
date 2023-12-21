@@ -37,11 +37,8 @@ export default function MoodDialog({setOpen}: {setOpen: React.Dispatch<React.Set
   const {mutate: addMood} = api.mood.createMood.useMutation({onSuccess: () => setOpen(false)})
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
     addMood({value: parseInt(values.mood), description: values.description || undefined})
-
   }
-
 
   return (
     <Form {...form}>
