@@ -18,6 +18,7 @@ import {
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { api } from '@/trpc/react'
 
+import IconWithText from '../ui/iconWithText';
 import { Input } from '../ui/input'
 
 
@@ -59,39 +60,44 @@ export default function MoodDialog({setOpen}: {setOpen: React.Dispatch<React.Set
                 >
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='1'  className='hidden'/>
+                      <RadioGroupItem value='1'  className='hidden peer sr-only'/>
                     </FormControl>
-                    <FormLabel className='font-normal'>
-                    😥
+                    <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
+                      <IconWithText type='sad' vertical>Sad</IconWithText>
                     </FormLabel>
                   </FormItem>
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='2' className='hidden'/>
+                      <RadioGroupItem value='2' className='hidden peer sr-only'/>
                     </FormControl>
-                    <FormLabel>
-                    😡
+                    <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
+                      <IconWithText type='angry' vertical>Angry</IconWithText>
                     </FormLabel>
                   </FormItem>
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='3'  className='hidden'/>
+                      <RadioGroupItem value='3'  className='hidden peer sr-only'/>
                     </FormControl>
-                    <FormLabel className='font-normal'>😐</FormLabel>
+                    <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
+                      <IconWithText type='normal' vertical>Normal</IconWithText>
+                    </FormLabel>
                   </FormItem>
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='4'  className='hidden'/>
+                      <RadioGroupItem value='4'  className='hidden peer sr-only'/>
                     </FormControl>
-                    <FormLabel className='font-normal'>😀</FormLabel>
+                    <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
+                      <IconWithText type='happy' vertical>Happy</IconWithText>
+                    </FormLabel>
                   </FormItem>
                   <FormItem className='flex items-center space-x-3 space-y-0'>
                     <FormControl>
-                      <RadioGroupItem value='5'  className='hidden'/>
+                      <RadioGroupItem value='5'  className='hidden peer sr-only'/>
                     </FormControl>
-                    <FormLabel className='font-normal'>🤣</FormLabel>
+                    <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
+                      <IconWithText type='funny' vertical>Happy</IconWithText>
+                    </FormLabel>
                   </FormItem>
-                
                 </RadioGroup>
               </FormControl>
               <FormMessage />
