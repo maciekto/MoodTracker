@@ -1,4 +1,3 @@
-import { type FC } from 'react'
 
 import iconAngry from '@/assets/icons/angryIcon.svg'
 import iconFunny from '@/assets/icons/funnyIcon.svg'
@@ -15,53 +14,57 @@ const ICONS = {
   funny: {src: iconFunny.src, alt: 'funny'}
 }
 
+type iconsType = keyof typeof ICONS
+
 const SIZE = {
   default: 'w-12 h-12',
   small: 'w-8 h-8',
   large: 'w-16 h-16',
 }
 
-type IconImageNativeProps = {
-  alt?: string
-  src?: string
-  type?: string
+type sizeType = keyof typeof SIZE
+
+export type IconImageProps = {
   size?: string
   className?: string
-}
-export type IconImageProps = IconImageNativeProps 
+} & ({
+  alt: string,
+  src: string,
+} | {
+  type: string
+})
 
-const IconImage: FC<IconImageProps> = ({
-  alt,
-  src,
+
+const IconImage  = ({
   size = 'default',
   className,
-  type
-}) => {
-  const iconClassName = cn( 
-    size === 'default' ? null : `a-Icon--${size}`,
-    className
-  )
+  ...props
+} : IconImageProps) => {
+  let img
 
-  return (
-    type ? <img 
-      src={ICONS[type as keyof typeof ICONS].src} 
-      alt={ICONS[type as keyof typeof ICONS].alt} 
-      width={SIZE[size as keyof typeof SIZE]} 
-      height={SIZE[size as keyof typeof SIZE]} 
-      className={cn('w-full h-full  transition-all duration-300 ease-in-out hover:animate-levitate ',
-        size ? SIZE[size as keyof typeof SIZE] : '',
-        iconClassName)}/> 
-      :
-      <img
-        alt={alt}
-        src={src}
-        width={SIZE[size as keyof typeof SIZE]} 
-        height={SIZE[size as keyof typeof SIZE]} 
-        className={cn('w-full h-full',
-          size ? SIZE[size as keyof typeof SIZE] : '',
-          iconClassName)}
-      />
-  )
+  if('type' in props && props.type !== undefined) {
+    img = 
+    <img 
+      src={ICONS[props.type as iconsType].src} 
+      alt={ICONS[props.type as iconsType].alt} 
+      width={SIZE[size as sizeType]} 
+      height={SIZE[size as sizeType]} 
+      className={cn('w-full h-full transition-all duration-300 ease-in-out hover:animate-levitate ',
+        size ? SIZE[size as sizeType] : '',
+        className)}/> 
+  } else if ('src' in props && props.src !== undefined) {
+    img = 
+    <img
+      alt={props.alt}
+      src={props.src}
+      width={SIZE[size as sizeType]} 
+      height={SIZE[size as sizeType]} 
+      className={cn('w-full h-full transition-all duration-300 ease-in-out hover:animate-levitate',
+        size ? SIZE[size as sizeType] : '',
+        className)}
+    />
+  }
+  return img
 }
 
 export default IconImage

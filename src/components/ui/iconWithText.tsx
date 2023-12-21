@@ -1,22 +1,24 @@
-import React, {type FC} from 'react'
+import React from 'react'
 
 import { cn } from '@/lib/utils'
 
 import IconImage from './icon'
 
 
-type iconWithTextProps = {
+type IconWithTextProps = {
   children: React.ReactNode,
   className?: string
   vertical?: boolean
-  alt?: string,
-  src?: string,
-  size?: string
-  type?: string
   imageClassName?: string
-}
+  size?: string
+} & ({
+  alt: string,
+  src: string,
+} | {
+  type: string
+})
 
-const IconWithText: FC<iconWithTextProps>  = ({ children, className,vertical,  imageClassName, ...props }) => (
+const IconWithText = ({ children, className,vertical,  imageClassName, ...props } : IconWithTextProps) => (
   <div  className={cn(
     'flex items-stretch justify-between gap-2',
     vertical ? 'flex-col' : 'flex-row',
