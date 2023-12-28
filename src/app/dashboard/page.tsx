@@ -5,6 +5,7 @@ import React from 'react'
 import DashboardBlock from '@/components/layouts/DashboardBlock';
 import Homeoverlay from '@/components/layouts/Homeoverlay';
 import MoodDialog from '@/components/mood/MoodDialog';
+import MoodChart from '@/components/MoodChart';
 import { getServerAuthSession } from '@/server/auth';
 
 async function page() {
@@ -18,9 +19,7 @@ async function page() {
         <Homeoverlay />
       </div>
       <DashboardBlock className='row-start-1 row-end-4 lg:row-start-1 lg:row-end-5 lg:col-start-1 lg:col-end-2'>
-        <div>
-          Graphs
-        </div>
+        <MoodChart />
       </DashboardBlock>
       <DashboardBlock className='lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3'>
         <MoodDialog />
