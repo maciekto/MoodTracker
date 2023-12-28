@@ -20,7 +20,7 @@ type IconWithTextProps = {
 
 const IconWithText = ({ children, className,vertical,  imageClassName, ...props } : IconWithTextProps) => (
   <div  className={cn(
-    'flex items-stretch justify-between gap-2',
+    'flex items-stretch justify-between gap-2 cursor-pointer',
     vertical ? 'flex-col' : 'flex-row',
     className
   )}>
