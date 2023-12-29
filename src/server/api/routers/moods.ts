@@ -27,6 +27,25 @@ export const moodRouter = createTRPCRouter({
   deleteMood: protectedProcedure
     .input(z.object({ id: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => ctx.db.mood.delete({
-      where: { id: input.id },
+      where: { id: input.id, createdBy: { id: ctx.session.user.id } },
     })),
+
+  getMoodsByDate: protectedProcedure
+    .input(z.object({ from: z.date(), to: z.date() }))
+    .query(async ({ ctx, input }) =>  {
+      if( input.from > input.to ) {
+        throw new Error('from must be before to');
+      }
+      if(input.from === undefined || input.to === undefined) {
+        throw new Error('from and to must be defined');
+      }
+      return ctx.db.mood.findMany({
+        where: {
+          createdBy: { id: ctx.session.user.id },
+          createdAt: {
+            gte: input.from,
+            lte: input.to,
+          },
+        },
+      })}),
 });
