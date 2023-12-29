@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react'
@@ -6,11 +7,19 @@ import DashboardBlock from '@/components/layouts/DashboardBlock';
 import Homeoverlay from '@/components/layouts/Homeoverlay';
 import MoodDialog from '@/components/mood/MoodDialog';
 import { getServerAuthSession } from '@/server/auth';
+import randomNotification from '@/lib/notifications';
+import NotificationButton from '@/components/dashboard/NotificationButton';
+import { api } from '@/trpc/react';
 
 async function page() {
   const session = await getServerAuthSession();
 
   if(session === null) { redirect('/') }
+
+
+
+
+  
 
   return (
     <div className='min-h-screen h-screen w-screen p-6 gap-6 grid grid-cols-1 lg:grid-cols-2 grid-rows-4'>
@@ -30,6 +39,7 @@ async function page() {
         >
           {session ? 'Sign out' : 'Sign in'}
         </Link>
+        <NotificationButton />
       </DashboardBlock>
     </div>
     

@@ -17,8 +17,8 @@ const withPWA = nextPWA({
   swcMinify: true,
 
   // Uncomment line below to enable pwa on development, and comment line with proccess.env.NODE_ENV === 'development'
-  //disable: false, 
-  disable: process.env.NODE_ENV === 'development',
+  disable: false, 
+  // disable: process.env.NODE_ENV === 'development',
 
   workboxOptions: {
     disableDevLogs: true,

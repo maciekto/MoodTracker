@@ -1,4 +1,5 @@
 import { moodRouter } from '@/server/api/routers/moods';
+import { userRouter } from '@/server/api/routers/users';
 import { createTRPCRouter } from '@/server/api/trpc';
 
 /**
@@ -8,6 +9,7 @@ import { createTRPCRouter } from '@/server/api/trpc';
  */
 export const appRouter = createTRPCRouter({
   mood: moodRouter,
+  user: userRouter,
 });
 
 // export type definition of API
