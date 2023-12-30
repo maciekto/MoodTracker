@@ -8,37 +8,33 @@ import { api } from '@/trpc/react';
 // TODO: Get user every time the button is clicked
 
 export default function NotificationButton() {
-  const [notifications, setNotifications] = useState(false);
-  const user = api.user.getUser.useQuery();
-    if(typeof user.data?.notifications === 'boolean' && user.data?.notifications !== notifications ) {
-      setNotifications(user.data?.notifications);
-    }
-    
+  const { data, refetch  } = api.user.getUser.useQuery();
   const { mutate: updateNotificationsSettings } = api.user.updateUserNotification.useMutation({
     onSuccess: () => {
-      console.log('Notifications settings updated to ' + !notifications)
-      setNotifications(!notifications)
+      refetch();
+      console.log('Notifications settings updated to ' + !data?.notifications)
+      if(data?.notifications == false) { randomNotification()}
     }
   })
 
-  
-
-  // if(notifications) {
-  //   randomNotification();
-  // }
-  
-
   function handleNotif() {
-    //setNotifications(!notifications);
-    updateNotificationsSettings({notifications: !notifications}) 
-    // Notification.requestPermission().then((result) => {
-    //   if(result === "granted") {
-    //     randomNotification();
-    //   }
-    // })
+    if(data?.notifications == true) {
+      updateNotificationsSettings({notifications: !data?.notifications}) 
+    }
+
+    if(data?.notifications == false ) {
+      Notification.requestPermission().then((result) => {
+        if(result === "granted") {
+          updateNotificationsSettings({notifications: !data?.notifications}) 
+        }
+      })
+    }
+    
+
+    
   }
-  useEffect(() => {}, [notifications, user])
+  useEffect(() => {}, [data?.notifications])
   return (
-    <Button type='button' size={'lg'} onClick={handleNotif}>Turn {notifications ? 'off' : 'on'} notifications</Button>
+    <Button type='button' size={'lg'} onClick={handleNotif}>Turn {data?.notifications ? 'off' : 'on'} notifications</Button>
   )
 }
