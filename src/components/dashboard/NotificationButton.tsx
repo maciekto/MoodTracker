@@ -5,8 +5,6 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '../ui/button';
 import { api } from '@/trpc/react';
 
-// TODO: Get user every time the button is clicked
-
 export default function NotificationButton() {
   
   const { data, refetch  } = api.user.getUser.useQuery();
@@ -16,7 +14,6 @@ export default function NotificationButton() {
       if(data?.notifications == false) { 
         firstNotification() 
       }
-     
     }
   })
 

@@ -30,7 +30,7 @@ const MoodChart: React.FC = () => {
 
   return (
     
-    <div className='grow flex flex-col justify-center items-center'>
+    <div className='grow flex flex-col justify-center items-center max-w-full'>
       <DatePicker dateRange={dateRange} setDateRange={setDateRange}/>
       <DataChart type='line' data={lineChartData} options={{responsive: true}}/>
     </div>
