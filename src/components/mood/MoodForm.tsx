@@ -43,56 +43,56 @@ export default function MoodDialog({setOpen}: {setOpen: React.Dispatch<React.Set
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8 w-full'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8 w-full h-full'>
         <FormField
           control={form.control}
           name='mood'
           render={({ field }) => (
-            <FormItem>
+            <FormItem className='h-[70%]'>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value.toString()}
-                  className='flex flex-row space-y-1 justify-between flex-wrap '
+                  className='grid grid-cols-2 grid-rows-5 space-y-1 justify-between flex-wrap justify-items-center h-full pt-10 pb-10'
                 >
-                  <FormItem className='flex items-center space-x-3 space-y-0'>
+                  <FormItem className='flex items-center space-x-3 space-y-0 col-start-1 col-end-1 row-start-1 row-end-2'>
                     <FormControl>
                       <RadioGroupItem value='1'  className='hidden peer sr-only'/>
                     </FormControl>
                     <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
-                      <IconWithText type='sad' vertical>Sad</IconWithText>
+                      <IconWithText size='xl' type='sad' vertical>Sad</IconWithText>
                     </FormLabel>
                   </FormItem>
-                  <FormItem className='flex items-center space-x-3 space-y-0'>
+                  <FormItem className='flex items-center space-x-3 space-y-0 col-start-2 col-end-2 row-start-2 row-end-3'>
                     <FormControl>
                       <RadioGroupItem value='2' className='hidden peer sr-only'/>
                     </FormControl>
                     <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
-                      <IconWithText type='angry' vertical>Angry</IconWithText>
+                      <IconWithText size='xl' type='angry' vertical>Angry</IconWithText>
                     </FormLabel>
                   </FormItem>
-                  <FormItem className='flex items-center space-x-3 space-y-0'>
+                  <FormItem className='flex items-center space-x-3 space-y-0 col-start-1 col-end-1 row-start-3 row-end-4'>
                     <FormControl>
                       <RadioGroupItem value='3'  className='hidden peer sr-only'/>
                     </FormControl>
                     <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
-                      <IconWithText type='normal' vertical>Normal</IconWithText>
+                      <IconWithText size='xl' type='normal' vertical>Normal</IconWithText>
                     </FormLabel>
                   </FormItem>
-                  <FormItem className='flex items-center space-x-3 space-y-0'>
+                  <FormItem className='flex items-center space-x-3 space-y-0 col-start-2 col-end-2 row-start-4 row-end-5'>
                     <FormControl>
                       <RadioGroupItem value='4'  className='hidden peer sr-only'/>
                     </FormControl>
                     <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
-                      <IconWithText type='happy' vertical>Happy</IconWithText>
+                      <IconWithText size='xl' type='happy' vertical>Happy</IconWithText>
                     </FormLabel>
                   </FormItem>
-                  <FormItem className='flex items-center space-x-3 space-y-0'>
+                  <FormItem className='flex items-center space-x-3 space-y-0 col-start-1 col-end-1 row-start-5 row-end-6'>
                     <FormControl>
                       <RadioGroupItem value='5'  className='hidden peer sr-only'/>
                     </FormControl>
                     <FormLabel className='text-center peer-aria-checked:scale-125 transition-all duration-300 ease-in-out'>
-                      <IconWithText type='funny' vertical>Happy</IconWithText>
+                      <IconWithText size='xl' type='funny' vertical>Happy</IconWithText>
                     </FormLabel>
                   </FormItem>
                 </RadioGroup>
@@ -110,7 +110,7 @@ export default function MoodDialog({setOpen}: {setOpen: React.Dispatch<React.Set
               <FormLabel htmlFor='description'>Enter description of your mood</FormLabel>
               <Input id='description' placeholder='...' {...field}/>
             </FormItem>)} />
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' size='lg'>Submit</Button>
       </form>
     </Form>
   )
