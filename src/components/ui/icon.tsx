@@ -40,8 +40,8 @@ export type IconImageProps = {
 const IconImage  = ({
   size = 'default',
   className,
-  ...props
-} : IconImageProps) => {
+  ...props 
+} : IconImageProps) => { 
   let img
 
   if('type' in props && props.type !== undefined) {
