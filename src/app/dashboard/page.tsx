@@ -7,7 +7,7 @@ import DashboardBlock from '@/components/layouts/DashboardBlock';
 import Homeoverlay from '@/components/layouts/Homeoverlay';
 import MoodDialog from '@/components/mood/MoodDialog';
 import { getServerAuthSession } from '@/server/auth';
-import randomNotification from '@/lib/notifications';
+import randomNotification from '@/lib/firstNotification';
 import NotificationButton from '@/components/dashboard/NotificationButton';
 import { api } from '@/trpc/react';
 
