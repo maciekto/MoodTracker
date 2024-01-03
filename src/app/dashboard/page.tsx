@@ -6,10 +6,12 @@ import React from 'react'
 import DashboardBlock from '@/components/layouts/DashboardBlock';
 import Homeoverlay from '@/components/layouts/Homeoverlay';
 import MoodDialog from '@/components/mood/MoodDialog';
+import MoodChart from '@/components/MoodChart';
 import { getServerAuthSession } from '@/server/auth';
 import randomNotification from '@/lib/firstNotification';
 import NotificationButton from '@/components/dashboard/NotificationButton';
 import { api } from '@/trpc/react';
+import { Button } from '@/components/ui/button';
 
 async function page() {
   const session = await getServerAuthSession();
@@ -27,17 +29,15 @@ async function page() {
         <Homeoverlay />
       </div>
       <DashboardBlock className='row-start-1 row-end-4 lg:row-start-1 lg:row-end-5 lg:col-start-1 lg:col-end-2'>
-        <div>
-          Graphs
-        </div>
+        <MoodChart />
       </DashboardBlock>
       <DashboardBlock className='lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3'>
         <MoodDialog />
         <Link
           href={session ? '/api/auth/signout' : '/api/auth/signin'}
-          className='text-white top-3/4 rounded-full bg-neutral-800 px-10 py-3 font-semibold no-underline hover:scale-105 duration-300 transition-transform ease-in-out z-30'
         >
-          {session ? 'Sign out' : 'Sign in'}
+          <Button size='lg' variant='homePageCTA'>{session ? 'Sign out' : 'Sign in'}</Button>
+          
         </Link>
         <NotificationButton />
       </DashboardBlock>

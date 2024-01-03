@@ -20,6 +20,8 @@ const SIZE = {
   default: 'w-12 h-12',
   small: 'w-8 h-8',
   large: 'w-16 h-16',
+  xl: 'w-20 h-20',
+  xxl: 'w-24 h-24',
 }
 
 type sizeType = keyof typeof SIZE
@@ -38,8 +40,8 @@ export type IconImageProps = {
 const IconImage  = ({
   size = 'default',
   className,
-  ...props
-} : IconImageProps) => {
+  ...props 
+} : IconImageProps) => { 
   let img
 
   if('type' in props && props.type !== undefined) {

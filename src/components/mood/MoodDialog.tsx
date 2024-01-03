@@ -19,16 +19,16 @@ export default function MoodDialog () {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant='outline'>Submit mood</Button>
+        <Button variant='homePageCTA' size='lg'>Submit mood</Button>
       </DialogTrigger>
-      <DialogContent className=''>
-        <DialogHeader>
+      <DialogContent className='max-h-screen h-[95vh] flex flex-col sm:rounded-[50px] rounded-[50px] p-8'>
+        <DialogHeader className=''>
           <DialogTitle>How are you feeling today?</DialogTitle>
           <DialogDescription>
             Select one of the following moods and add optional description
           </DialogDescription>
         </DialogHeader>
-        <div className='flex items-center justify-center w-full'>
+        <div className='flex items-center justify-center w-full h-full'>
           <MoodForm setOpen={setOpen}/>
         </div>
       </DialogContent>
